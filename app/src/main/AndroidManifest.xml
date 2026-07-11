@@ -52,19 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LogoutActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainMenuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProfilePageActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"

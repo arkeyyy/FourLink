@@ -36,21 +36,6 @@
         android:paddingRight="10dp"
         />
 
-
-    <Button
-        android:id="@+id/profile_button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:text="Profile"
-        android:textSize="18sp"
-        android:background="@drawable/main_menu_exit_circle"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_margin="15dp"
-        android:fontFamily="@font/amaranthregular"
-        android:textColor="@color/white"
-        />
-
     <Button
         android:id="@+id/tutorial_button"
         android:layout_width="80dp"
@@ -59,11 +44,10 @@
         android:textSize="17dp"
         android:fontFamily="@font/amaranthregular"
         android:background="@drawable/play_button"
-        android:layout_above="@id/profile_button"
-        android:layout_alignStart="@id/profile_button"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="15dp"
         />
-
 
     <Button
         android:id="@+id/settings_button"
@@ -80,11 +64,5 @@
         android:fontFamily="@font/amaranthregular"
         android:textColor="@color/white"
         />
-
-
-
-
-
-
 
 </RelativeLayout>

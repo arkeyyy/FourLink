@@ -1,6 +1,5 @@
 package com.example.fourlink
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -16,12 +15,7 @@ class MainMenuActivity : TransitionActivity() {
 
         val play_button = findViewById<ImageView>(R.id.play_button)
         val tutorial_button = findViewById<Button>(R.id.tutorial_button)
-        val profile_button = findViewById<Button>(R.id.profile_button)
         val settings_button = findViewById<Button>(R.id.settings_button)
-
-        profile_button.setOnClickListener{
-            startActivity(Intent(this, ProfilePageActivity::class.java))
-        }
 
         settings_button.setOnClickListener{
             startActivity(Intent(this, SettingsActivity::class.java))
