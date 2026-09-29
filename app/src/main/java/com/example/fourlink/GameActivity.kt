@@ -14,6 +14,8 @@ class GameActivity : TransitionActivity() {
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var boardRenderer: GameBoardRenderer
     private var endDialogRunnable: Runnable? = null
+    private var isDropAnimating = false
+    private var queuedColumn: Int? = null
 
     override fun onBackPressed() {
         if (gameState.isFinished) super.onBackPressed()
@@ -35,6 +37,7 @@ class GameActivity : TransitionActivity() {
     }
 
     override fun onDestroy() {
+        queuedColumn = null
         endDialogRunnable?.let(handler::removeCallbacks)
         endDialogRunnable = null
         if (::boardRenderer.isInitialized) boardRenderer.release()
@@ -52,7 +55,7 @@ class GameActivity : TransitionActivity() {
         }
 
         findViewById<Button>(R.id.surrender_button).setOnClickListener {
-            if (gameState.isFinished) return@setOnClickListener
+            if (gameState.isFinished || isDropAnimating) return@setOnClickListener
             val dialog = SurrenderDialogFragment.newInstance(gameState.currentPlayer.name)
             dialog.setOnSurrenderConfirmed {
                 val winner = gameState.surrender() ?: return@setOnSurrenderConfirmed
@@ -67,25 +70,47 @@ class GameActivity : TransitionActivity() {
 
     private fun dropDisc(column: Int) {
         if (gameState.isFinished) return
+        if (isDropAnimating) {
+            if (queuedColumn == null) queuedColumn = column
+            return
+        }
         findViewById<TextView>(R.id.start_text).visibility = View.GONE
 
         when (val result = gameState.drop(column)) {
             MoveResult.ColumnFull, MoveResult.GameAlreadyEnded -> Unit
             is MoveResult.Placed -> {
-                boardRenderer.showDrop(result.cell, result.player)
-                when {
-                    result.winningCells.isNotEmpty() -> {
-                        boardRenderer.blink(result.winningCells, result.player)
-                        val message = "PLAYER " + result.player.name + " WINS"
-                        val runnable = Runnable { showGameEnd(message) }
-                        endDialogRunnable = runnable
-                        handler.postDelayed(runnable, 2000)
-                    }
-                    result.isDraw -> showGameEnd("Game Draw :(")
-                    else -> updatePlayerUi()
+                isDropAnimating = true
+                findViewById<Button>(R.id.surrender_button).isEnabled = false
+                boardRenderer.showDrop(result.cell, result.player) {
+                    if (!isFinishing && !isDestroyed) onChipLanded(result)
                 }
             }
         }
+    }
+
+    private fun onChipLanded(result: MoveResult.Placed) {
+        isDropAnimating = false
+        when {
+            result.winningCells.isNotEmpty() -> {
+                queuedColumn = null
+                boardRenderer.blink(result.winningCells, result.player)
+                val message = "PLAYER " + result.player.name + " WINS"
+                val runnable = Runnable { showGameEnd(message) }
+                endDialogRunnable = runnable
+                handler.postDelayed(runnable, 2000)
+            }
+            result.isDraw -> {
+                queuedColumn = null
+                showGameEnd("Game Draw :(")
+            }
+            else -> {
+                updatePlayerUi()
+                val nextColumn = queuedColumn
+                queuedColumn = null
+                if (nextColumn != null) dropDisc(nextColumn)
+            }
+        }
+        findViewById<Button>(R.id.surrender_button).isEnabled = !isDropAnimating && !gameState.isFinished
     }
 
     private fun updatePlayerUi() {
