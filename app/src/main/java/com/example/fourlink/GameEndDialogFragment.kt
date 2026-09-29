@@ -9,13 +9,13 @@ import android.widget.Button
 import android.widget.TextView
 
 class GameEndDialogFragment : DialogFragment() {
-    private var winner: String? = null
+    private var resultMessage: String? = null
     private var onRestart: (() -> Unit)? = null
     private var onMainMenu: (() -> Unit)? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        winner = arguments?.getString(ARG_WINNER)
+        resultMessage = arguments?.getString(ARG_MESSAGE)
     }
 
     override fun onStart() {
@@ -39,10 +39,10 @@ class GameEndDialogFragment : DialogFragment() {
         val restartButton = view.findViewById<Button>(R.id.btnRestart)
         val mainMenuButton = view.findViewById<Button>(R.id.btnMainMenu)
 
-        val styledText = when (winner) { // color the text of the winning color
+        val styledText = when (resultMessage) {
             "PLAYER YELLOW WINS" -> "PLAYER <font color='#FFFF33'>YELLOW</font> WINS"
             "PLAYER RED WINS" -> "PLAYER <font color='#EC1C24'>RED</font> WINS"
-            else -> winner
+            else -> resultMessage
         }
 
         messageText.text = Html.fromHtml(styledText, Html.FROM_HTML_MODE_LEGACY)
@@ -68,12 +68,13 @@ class GameEndDialogFragment : DialogFragment() {
     }
 
     companion object {
-        private const val ARG_WINNER = "arg_winner"
+        // Keep the argument key so restored dialogs can read an existing result message.
+        private const val ARG_MESSAGE = "arg_winner"
 
-        fun newInstance(winner: String): GameEndDialogFragment {
+        fun newInstance(message: String): GameEndDialogFragment {
             val fragment = GameEndDialogFragment()
             val args = Bundle()
-            args.putString(ARG_WINNER, winner)
+            args.putString(ARG_MESSAGE, message)
             fragment.arguments = args
             return fragment
         }
