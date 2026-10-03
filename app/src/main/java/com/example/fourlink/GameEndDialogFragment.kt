@@ -1,82 +1,32 @@
 package com.example.fourlink
 
-import android.app.Dialog
-import android.app.DialogFragment
 import android.os.Bundle
-import android.text.Html
-import android.view.LayoutInflater
-import android.widget.Button
+import android.view.View
 import android.widget.TextView
+import androidx.core.os.bundleOf
 
-class GameEndDialogFragment : DialogFragment() {
-    private var resultMessage: String? = null
-    private var onRestart: (() -> Unit)? = null
-    private var onMainMenu: (() -> Unit)? = null
-
+class GameEndDialogFragment : GameDialogFragment(R.layout.dialog_game_end) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        resultMessage = arguments?.getString(ARG_MESSAGE)
+        isCancelable = false
     }
 
-    override fun onStart() {
-        super.onStart()
-        dialog?.window?.setLayout(
-            (300 * resources.displayMetrics.density).toInt(),
-            (235 * resources.displayMetrics.density).toInt()
-        )
-    }
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = Dialog(activity)
-        val inflater = LayoutInflater.from(activity)
-        val view = inflater.inflate(R.layout.dialog_game_end, null)
-
-        dialog.setContentView(view)
-        dialog.setCancelable(false)
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-
-        val messageText = view.findViewById<TextView>(R.id.tvMessage)
-        val restartButton = view.findViewById<Button>(R.id.btnRestart)
-        val mainMenuButton = view.findViewById<Button>(R.id.btnMainMenu)
-
-        val styledText = when (resultMessage) {
-            "PLAYER YELLOW WINS" -> "PLAYER <font color='#FFFF33'>YELLOW</font> WINS"
-            "PLAYER RED WINS" -> "PLAYER <font color='#EC1C24'>RED</font> WINS"
-            else -> resultMessage
+    override fun bind(content: View) {
+        content.findViewById<TextView>(R.id.tvMessage).text = requireArguments().getString("arg_winner")
+        content.findViewById<View>(R.id.btnRestart).setOnClickListener {
+            parentFragmentManager.setFragmentResult(RESULT, bundleOf("restart" to true))
+            dismiss()
         }
-
-        messageText.text = Html.fromHtml(styledText, Html.FROM_HTML_MODE_LEGACY)
-
-        restartButton.setOnClickListener {
-            dialog.dismiss()
-            onRestart?.invoke()
+        content.findViewById<View>(R.id.btnMainMenu).setOnClickListener {
+            parentFragmentManager.setFragmentResult(RESULT, bundleOf("restart" to false))
+            dismiss()
         }
-
-        mainMenuButton.setOnClickListener {
-            dialog.dismiss()
-            onMainMenu?.invoke()
-        }
-
-        return dialog
-    }
-
-
-
-    fun setCallbacks(onRestart: () -> Unit, onMainMenu: () -> Unit) {
-        this.onRestart = onRestart
-        this.onMainMenu = onMainMenu
     }
 
     companion object {
-        // Keep the argument key so restored dialogs can read an existing result message.
-        private const val ARG_MESSAGE = "arg_winner"
-
-        fun newInstance(message: String): GameEndDialogFragment {
-            val fragment = GameEndDialogFragment()
-            val args = Bundle()
-            args.putString(ARG_MESSAGE, message)
-            fragment.arguments = args
-            return fragment
+        const val RESULT = "game_end_action"
+        fun newInstance(message: String) = GameEndDialogFragment().apply {
+            arguments = bundleOf("arg_winner" to message)
         }
     }
 }

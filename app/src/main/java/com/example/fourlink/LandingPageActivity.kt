@@ -15,7 +15,7 @@ class LandingPageActivity : TransitionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.landing_page_screen)
-        applyImmersiveMode()
+        applyScreenChrome()
 
         navigationHandler.postDelayed(navigateToMainMenu, 3000L)
     }

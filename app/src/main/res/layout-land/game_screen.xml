@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ui_canvas">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/page_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            app:navigationIcon="@drawable/ui_back"
+            app:navigationContentDescription="@string/back"
+            app:contentInsetEnd="20dp" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:clipToPadding="false">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.example.fourlink.ContentColumn
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/page_gutter"
+                    android:layout_gravity="top|center_horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.3"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="20dp">
+                            <com.example.fourlink.SquareBoard
+                                android:id="@+id/game_grid"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:padding="8dp"
+                                android:background="@drawable/ui_board"
+                                android:columnCount="7"
+                                android:rowCount="6"
+                                android:importantForAccessibility="yes"
+                                android:focusable="true"
+                                android:layout_marginTop="12dp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <com.example.fourlink.PlayerPanels
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:baselineAligned="false">
+                                <TextView
+                                    android:id="@+id/yellow_player_tab"
+                                    style="@style/Ui.Player"
+                                    android:background="@drawable/ui_player_yellow_active"
+                                    android:text="@string/yellow_turn"
+                                    android:layout_marginEnd="6dp" />
+                                <TextView
+                                    android:id="@+id/red_player_tab"
+                                    style="@style/Ui.Player"
+                                    android:background="@drawable/ui_player_red"
+                                    android:text="@string/red"
+                                    android:layout_marginStart="6dp" />
+                            </com.example.fourlink.PlayerPanels>
+                            <TextView
+                                android:id="@+id/start_text"
+                                style="@style/Ui.Body"
+                                android:text="@string/yellow_starts"
+                                android:gravity="center"
+                                android:minHeight="48dp"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:accessibilityLiveRegion="polite" />
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/surrender_button"
+                                style="@style/Ui.Button.Danger"
+                                android:text="@string/surrender"
+                                app:icon="@drawable/ui_flag" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.example.fourlink.ContentColumn>
+            </FrameLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

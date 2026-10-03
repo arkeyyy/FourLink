@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap
+            android:src="@drawable/main_menu_bg"
+            android:gravity="fill" />
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#DD003366" />
+        </shape>
+    </item>
+</layer-list>

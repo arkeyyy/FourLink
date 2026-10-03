@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ui_canvas">#003366</color>
+    <color name="ui_tutorial_canvas">#002B57</color>
+    <color name="ui_surface">#0052A3</color>
+    <color name="ui_surface_alt">#004080</color>
+    <color name="ui_ink">@color/white</color>
+    <color name="ui_muted">#D1E7FF</color>
+    <color name="ui_outline">@color/light_blue</color>
+    <color name="ui_accent">@color/yellow</color>
+    <color name="ui_danger">#FFD1D1</color>
+    <color name="ui_card">#16558A</color>
+    <color name="ui_dialog_secondary">#0073E6</color>
+</resources>

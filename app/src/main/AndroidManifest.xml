@@ -18,6 +18,7 @@
         android:required="true" />
 
     <application
+        android:name=".FourLinkApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,9 +29,6 @@
         android:theme="@style/Theme.FourLink"
         android:forceDarkAllowed="false"
         tools:targetApi="31">
-        <activity
-            android:name=".SurrenderDialogFragment"
-            android:exported="false" />
         <activity
             android:name=".TutorialActivity"
             android:exported="false" />

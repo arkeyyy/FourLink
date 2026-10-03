@@ -91,6 +91,31 @@ class GameStateTest {
         assertEquals(MoveResult.GameAlreadyEnded, game.drop(1))
     }
 
+    @Test
+    fun restoredMatchContinuesFromItsOwnSnapshot() {
+        val original = GameState()
+        original.play(0, 1, 0)
+        val restored = GameState().apply { restore(original.snapshot()) }
+        assertEquals(Player.RED, restored.currentPlayer)
+        assertEquals(Cell(4, 1), restored.place(1).cell)
+        assertEquals(null, original.playerAt(Cell(4, 1)))
+        assertEquals(Player.YELLOW, restored.playerAt(Cell(4, 0)))
+    }
+
+    @Test
+    fun restoredWinAndSurrenderRemainFinished() {
+        val won = GameState().apply { play(0, 0, 1, 1, 2, 2, 3) }
+        val restored = GameState().apply { restore(won.snapshot()) }
+        assertEquals(Player.YELLOW, restored.winner)
+        assertEquals(won.winningCells, restored.winningCells)
+        assertEquals(MoveResult.GameAlreadyEnded, restored.drop(5))
+        val surrendered = GameState().apply { surrender() }
+        restored.restore(surrendered.snapshot())
+        assertEquals(Player.RED, restored.winner)
+        assertTrue(restored.winningCells.isEmpty())
+        assertTrue(restored.isFinished)
+    }
+
     private fun GameState.place(column: Int): MoveResult.Placed =
         drop(column) as MoveResult.Placed
 

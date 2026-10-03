@@ -1,246 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="0dp"
-    android:id="@+id/root_layout"
-    >
-
-    <TextView
-        android:id="@+id/start_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yellow starts first!"
-        android:textColor="@color/black"
-        android:textSize="28dp"
-        android:fontFamily="@font/amaranthregular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="35dp"
-        />
-
-    <!--<ImageView
-        android:id="@+id/back_button"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/game_back_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <TextView
-        android:id="@+id/yellow_player_tab"
-        android:layout_width="170dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/player_yellow"
-        android:fontFamily="@font/amaranthregular"
-        android:gravity="center"
-        android:text="Player Yellow"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/red_player_tab"
-        android:layout_width="170dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/player_red"
-        android:fontFamily="@font/amaranthregular"
-        android:gravity="center"
-        android:text="Player Red"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--Board Image (Layout View only)-->
-    <ImageView
-        android:id="@+id/game_board"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="30dp"
-
-        android:scaleType="fitEnd"
-        android:src="@drawable/board_img"
-        app:layout_constraintBottom_toBottomOf="parent"
-
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--Board Grid-->
-    <GridLayout
-        android:id="@+id/game_grid"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:columnCount="7"
-        android:rowCount="6"
-
-        android:scaleType="fitEnd"
-        app:layout_constraintBottom_toBottomOf="@+id/game_board"
-        app:layout_constraintEnd_toEndOf="@+id/game_board"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/game_board"
-        app:layout_constraintTop_toTopOf="@+id/game_board"
-        app:layout_constraintVertical_bias="0.0">
-
-        <!-- Dynamically generated cells will go here -->
-    </GridLayout>
-
-    <Button
-        android:id="@+id/surrender_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Surrender"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="18sp"
-        android:padding="15dp"
-        android:background="@drawable/button_surrender"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_grid"
-        />
-
-    <Button
-        android:id="@+id/play_again_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="PLAY AGAIN"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="18sp"
-        android:padding="15dp"
-        android:background="@drawable/button_play_again"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_grid"
-        />
-
-    <!--<Button
-        android:id="@+id/testTurn_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+1 Turn"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        />-->
-
+    android:background="@color/ui_canvas">
     <LinearLayout
-        android:id="@+id/drop_buttons"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:weightSum="7"
-        app:layout_constraintTop_toTopOf="@+id/game_board"
-        app:layout_constraintBottom_toBottomOf="@+id/game_board"
-        app:layout_constraintStart_toStartOf="@+id/game_board"
-        app:layout_constraintEnd_toEndOf="@+id/game_board">
-
-        <!-- Drop Buttons for each column -->
-        <Button
-            android:id="@+id/col_button_1"
-            android:layout_width="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/page_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            app:navigationIcon="@drawable/ui_back"
+            app:navigationContentDescription="@string/back"
+            app:contentInsetEnd="20dp" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent" />
-
-        <Button
-            android:id="@+id/col_button_2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent" />
-
-        <Button
-            android:id="@+id/col_button_3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent" />
-
-        <Button
-            android:id="@+id/col_button_4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent" />
-
-        <Button
-            android:id="@+id/col_button_5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent" />
-
-        <Button
-            android:id="@+id/col_button_6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent" />
-
-        <Button
-            android:id="@+id/col_button_7"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent" />
-
+            android:fillViewport="true"
+            android:clipToPadding="false">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.example.fourlink.ContentColumn
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/page_gutter"
+                    android:layout_gravity="top|center_horizontal">
+                    <com.example.fourlink.PlayerPanels
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+                        <TextView
+                            android:id="@+id/yellow_player_tab"
+                            style="@style/Ui.Player"
+                            android:background="@drawable/ui_player_yellow_active"
+                            android:text="@string/yellow_turn"
+                            android:layout_marginEnd="6dp" />
+                        <TextView
+                            android:id="@+id/red_player_tab"
+                            style="@style/Ui.Player"
+                            android:background="@drawable/ui_player_red"
+                            android:text="@string/red"
+                            android:layout_marginStart="6dp" />
+                    </com.example.fourlink.PlayerPanels>
+                    <TextView
+                        android:id="@+id/start_text"
+                        style="@style/Ui.Body"
+                        android:text="@string/yellow_starts"
+                        android:gravity="center"
+                        android:minHeight="48dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:accessibilityLiveRegion="polite" />
+                    <com.example.fourlink.SquareBoard
+                        android:id="@+id/game_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="8dp"
+                        android:background="@drawable/ui_board"
+                        android:columnCount="7"
+                        android:rowCount="6"
+                        android:importantForAccessibility="yes"
+                        android:focusable="true"
+                        android:layout_marginTop="24dp" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/surrender_button"
+                        style="@style/Ui.Button.Danger"
+                        android:text="@string/surrender"
+                        app:icon="@drawable/ui_flag"
+                        android:layout_marginTop="20dp" />
+                </com.example.fourlink.ContentColumn>
+            </FrameLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
-
-    <!--<Button
-        android:id="@+id/change_turn_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change turn"
-
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />-->
-
-    <ImageView
-        android:id="@+id/back_button"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/back_arrow"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,6 @@ package com.example.fourlink
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.app.Activity
@@ -12,8 +11,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.view.View
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.DecelerateInterpolator
+import android.view.animation.BounceInterpolator
 import android.widget.GridLayout
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -21,42 +19,24 @@ import androidx.core.view.OneShotPreDrawListener
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.setMargins
 import kotlin.math.min
-import kotlin.math.sqrt
 
 internal class GameBoardRenderer(private val activity: Activity) {
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var rootLayout: ConstraintLayout
     private lateinit var cellViews: Array<Array<ImageView>>
     private var blinkRunnable: Runnable? = null
-    private var dropAnimator: AnimatorSet? = null
+    private var dropAnimator: ObjectAnimator? = null
     private var flyingChip: ImageView? = null
     private var pendingLayout: OneShotPreDrawListener? = null
     private var isReleased = false
 
-    fun initialize() {
+    fun initialize(onColumnSelected: (Int) -> Unit) {
         rootLayout = activity.findViewById(R.id.root_layout)
-        val boardImage = ImageView(activity).apply {
-            id = View.generateViewId()
-            setImageResource(R.drawable.board_full_blue)
-            scaleType = ImageView.ScaleType.FIT_XY
-            layoutParams = ConstraintLayout.LayoutParams(
-                ConstraintLayout.LayoutParams.MATCH_CONSTRAINT,
-                ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
-            ).apply {
-                topToTop = R.id.game_grid
-                bottomToBottom = R.id.game_grid
-                startToStart = R.id.game_grid
-                endToEnd = R.id.game_grid
-                topMargin = -25
-                bottomMargin = -50
-            }
-        }
-        rootLayout.addView(boardImage, 0)
-
         val gridLayout = activity.findViewById<GridLayout>(R.id.game_grid)
         gridLayout.removeAllViews()
         gridLayout.rowCount = GameState.ROWS
         gridLayout.columnCount = GameState.COLUMNS
+        (gridLayout as SquareBoard).onColumnSelected = onColumnSelected
         cellViews = Array(GameState.ROWS) { row ->
             Array(GameState.COLUMNS) { column ->
                 val cell = ImageView(activity).apply {
@@ -65,15 +45,36 @@ internal class GameBoardRenderer(private val activity: Activity) {
                         height = 0
                         columnSpec = GridLayout.spec(column, 1f)
                         rowSpec = GridLayout.spec(row, 1f)
-                        setMargins(4)
+                        setMargins(0)
                     }
-                    setImageResource(R.drawable.game_piece_empty)
-                    scaleType = ImageView.ScaleType.CENTER_INSIDE
+                    setImageResource(R.drawable.ui_chip_empty)
+                    scaleType = ImageView.ScaleType.FIT_CENTER
+                    importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+                    isFocusable = false
+                    setOnClickListener { onColumnSelected(column) }
                 }
                 gridLayout.addView(cell)
                 cell
             }
         }
+    }
+
+    fun render(game: GameState) {
+        for (row in 0 until GameState.ROWS) for (column in 0 until GameState.COLUMNS) {
+            val player = game.playerAt(Cell(row, column))
+            cellViews[row][column].setImageResource(player?.let(::discResource) ?: R.drawable.ui_chip_empty)
+        }
+        describeBoard(game)
+    }
+
+    fun describeBoard(game: GameState) {
+        val description = StringBuilder(activity.getString(R.string.board_description))
+        for (row in 0 until GameState.ROWS) for (column in 0 until GameState.COLUMNS) {
+            val player = game.playerAt(Cell(row, column)) ?: continue
+            val name = activity.getString(if (player == Player.YELLOW) R.string.yellow else R.string.red)
+            description.append(' ').append(activity.getString(R.string.occupied_cell, name, row + 1, column + 1))
+        }
+        activity.findViewById<GridLayout>(R.id.game_grid).contentDescription = description
     }
 
     fun showDrop(cell: Cell, player: Player, onLanded: () -> Unit) {
@@ -106,42 +107,23 @@ internal class GameBoardRenderer(private val activity: Activity) {
 
         val bounds = boundsInRoot(destination)
         val topBounds = boundsInRoot(cellViews[0][cell.column])
-        val bottomBounds = boundsInRoot(cellViews[GameState.ROWS - 1][cell.column])
         val chip = ImageView(activity).apply {
             setImageResource(disc)
             scaleType = destination.scaleType
             layout(bounds.left, bounds.top, bounds.right, bounds.bottom)
             importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
         }
-        val diameter = min(
-            min(destination.width, destination.height),
-            min(chip.drawable.intrinsicWidth, chip.drawable.intrinsicHeight)
-        ).toFloat()
+        val diameter = min(destination.width, destination.height).toFloat()
         val startOffset = topBounds.top - bounds.top - diameter
-        val fullDistance = bottomBounds.top - topBounds.top + diameter
-        val fallDuration = (MAX_FALL_DURATION_MS * sqrt(-startOffset / fullDistance))
-            .toLong().coerceIn(MIN_FALL_DURATION_MS, MAX_FALL_DURATION_MS)
-        val rebound = diameter * REBOUND_FRACTION
 
         // An overlay leaves every board hole in place while the separate chip falls.
         chip.translationY = startOffset
         flyingChip = chip
         rootLayout.overlay.add(chip)
 
-        val fall = ObjectAnimator.ofFloat(chip, View.TRANSLATION_Y, startOffset, 0f).apply {
-            duration = fallDuration
-            interpolator = AccelerateInterpolator()
-        }
-        val bounceUp = ObjectAnimator.ofFloat(chip, View.TRANSLATION_Y, 0f, -rebound).apply {
-            duration = 8L
-            interpolator = DecelerateInterpolator()
-        }
-        val bounceDown = ObjectAnimator.ofFloat(chip, View.TRANSLATION_Y, -rebound, 0f).apply {
-            duration = 12L
-            interpolator = AccelerateInterpolator()
-        }
-        val animator = AnimatorSet().apply {
-            playSequentially(fall, bounceUp, bounceDown)
+        val animator = ObjectAnimator.ofFloat(chip, View.TRANSLATION_Y, startOffset, 0f).apply {
+            duration = DROP_DURATION_MS
+            interpolator = BounceInterpolator()
             addListener(object : AnimatorListenerAdapter() {
                 private var wasCancelled = false
 
@@ -177,13 +159,22 @@ internal class GameBoardRenderer(private val activity: Activity) {
 
     fun blink(cells: List<Cell>, player: Player) {
         stopBlinking()
+        if (!animationsEnabled()) {
+            for (cell in cells) {
+                cellViews[cell.row][cell.column].apply {
+                    setImageResource(discResource(player))
+                    foreground = activity.getDrawable(R.drawable.ui_winner_outline)
+                }
+            }
+            return
+        }
         var isVisible = true
         val playerDisc = discResource(player)
         val runnable = object : Runnable {
             override fun run() {
                 for (cell in cells) {
                     cellViews[cell.row][cell.column].setImageResource(
-                        if (isVisible) R.drawable.game_piece_empty else playerDisc
+                        if (isVisible) R.drawable.ui_chip_empty else playerDisc
                     )
                 }
                 isVisible = !isVisible
@@ -211,13 +202,11 @@ internal class GameBoardRenderer(private val activity: Activity) {
     }
 
     private fun discResource(player: Player): Int = when (player) {
-        Player.YELLOW -> R.drawable.game_piece_yellow
-        Player.RED -> R.drawable.game_piece_red
+        Player.YELLOW -> R.drawable.ui_chip_yellow
+        Player.RED -> R.drawable.ui_chip_red
     }
 
     private companion object {
-        const val MIN_FALL_DURATION_MS = 23L
-        const val MAX_FALL_DURATION_MS = 60L
-        const val REBOUND_FRACTION = 0.08f
+        const val DROP_DURATION_MS = 400L
     }
 }

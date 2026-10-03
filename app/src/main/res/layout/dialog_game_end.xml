@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:layout_width="wrap_content"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/game_end_bg">
-
-    <TextView
-        android:id="@+id/tvMessage"
-        android:text="Player X wins!"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:fontFamily="@font/amaranthregular"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnRestart"
-        android:background="@drawable/button_play_again"
-        android:text="Play Again"
-        android:textSize="18dp"
-        android:fontFamily="@font/amaranthregular"
+    android:background="@drawable/ui_card"
+    android:fillViewport="false">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        />
-
-    <Button
-        android:id="@+id/btnMainMenu"
-        android:background="@drawable/button_main_menu"
-        android:text="Main Menu"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/amaranthregular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        />
-
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="24dp">
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/ui_trophy"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ui_result_badge"
+            android:padding="8dp" />
+        <TextView
+            style="@style/Ui.Eyebrow"
+            android:text="@string/result_label" />
+        <com.example.fourlink.HeadingTextView
+            android:id="@+id/tvMessage"
+            style="@style/Ui.Title"
+            android:layout_marginTop="8dp" />
+        <TextView
+            style="@style/Ui.Body"
+            android:text="@string/result_body"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRestart"
+            style="@style/Ui.Button"
+            android:text="@string/play_again"
+            app:icon="@drawable/ui_play" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMainMenu"
+            style="@style/Ui.Button.DialogSecondary"
+            android:text="@string/main_menu"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

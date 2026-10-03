@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_menu_background">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.example.fourlink.ContentColumn
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/page_gutter"
+                android:layout_gravity="top|center_horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="20dp">
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/fourlink_logo"
+                        android:importantForAccessibility="no"
+                        android:scaleType="fitCenter" />
+                    <TextView
+                        style="@style/Ui.Heading"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/app_name" />
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/Ui.Panel"
+                    android:background="@drawable/ui_hero"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:padding="24dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="24dp">
+                        <TextView
+                            style="@style/Ui.Eyebrow"
+                            android:text="@string/menu_tag"
+                            android:textColor="@color/ui_on_hero"
+                            android:layout_marginBottom="12dp" />
+                        <com.example.fourlink.HeadingTextView
+                            style="@style/Ui.Title"
+                            android:text="@string/menu_title"
+                            android:textColor="@color/ui_on_hero" />
+                        <TextView
+                            style="@style/Ui.Body"
+                            android:text="@string/menu_body"
+                            android:textColor="@color/ui_on_hero"
+                            android:layout_marginTop="12dp" />
+                        <Space
+                            android:layout_width="1dp"
+                            android:layout_height="24dp" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/play_button"
+                            style="@style/Ui.Button"
+                            android:text="@string/play"
+                            app:icon="@drawable/ui_play" />
+                        <TextView
+                            style="@style/Ui.Caption"
+                            android:text="@string/local_players"
+                            android:textColor="@color/ui_on_hero"
+                            android:gravity="center"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+                        <FrameLayout
+                            android:background="@drawable/ui_art_panel"
+                            android:layout_width="match_parent"
+                            android:layout_height="240dp">
+                            <ImageView
+                                android:src="@drawable/ui_board_art"
+                                android:importantForAccessibility="no"
+                                android:scaleType="fitCenter"
+                                android:rotation="-6"
+                                android:padding="12dp"
+                                android:layerType="software"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+                        </FrameLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/tutorial_button"
+                        style="@style/Ui.Button.Shortcut"
+                        android:text="@string/tutorial"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:icon="@drawable/ui_book" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/settings_button"
+                        style="@style/Ui.Button.Shortcut"
+                        android:text="@string/settings"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:icon="@drawable/ui_settings" />
+                </LinearLayout>
+            </com.example.fourlink.ContentColumn>
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

@@ -21,6 +21,14 @@ internal sealed class MoveResult {
     data object GameAlreadyEnded : MoveResult()
 }
 
+internal data class GameSnapshot(
+    val board: List<Player?>,
+    val currentPlayer: Player,
+    val isFinished: Boolean,
+    val winner: Player?,
+    val winningCells: List<Cell>
+)
+
 internal class GameState {
     companion object {
         const val ROWS = 6
@@ -34,6 +42,26 @@ internal class GameState {
 
     var isFinished = false
         private set
+
+    var winner: Player? = null
+        private set
+
+    var winningCells: List<Cell> = emptyList()
+        private set
+
+    fun playerAt(cell: Cell): Player? = board[cell.row][cell.column]
+
+    fun snapshot() = GameSnapshot(board.flatMap { it.toList() }, currentPlayer,
+        isFinished, winner, winningCells.toList())
+
+    fun restore(snapshot: GameSnapshot) {
+        require(snapshot.board.size == ROWS * COLUMNS)
+        snapshot.board.forEachIndexed { index, player -> board[index / COLUMNS][index % COLUMNS] = player }
+        currentPlayer = snapshot.currentPlayer
+        isFinished = snapshot.isFinished
+        winner = snapshot.winner
+        winningCells = snapshot.winningCells.toList()
+    }
 
     fun drop(column: Int): MoveResult {
         require(column in 0 until COLUMNS) { "Column must be between 0 and ${COLUMNS - 1}" }
@@ -50,6 +78,8 @@ internal class GameState {
 
         if (winningCells.isNotEmpty() || isDraw) {
             isFinished = true
+            winner = player.takeIf { winningCells.isNotEmpty() }
+            this.winningCells = winningCells
         } else {
             currentPlayer = player.opponent()
         }
@@ -60,7 +90,8 @@ internal class GameState {
     fun surrender(): Player? {
         if (isFinished) return null
         isFinished = true
-        return currentPlayer.opponent()
+        winner = currentPlayer.opponent()
+        return winner
     }
 
     private fun winningLine(cell: Cell, player: Player): List<Cell> {

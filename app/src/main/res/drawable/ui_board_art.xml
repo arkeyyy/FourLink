@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="272dp"
+    android:height="240dp"
+    android:viewportWidth="272"
+    android:viewportHeight="240">
+    <path
+        android:fillColor="@color/ui_board_edge"
+        android:pathData="M16,16L256,16Q272,16 272,32L272,224Q272,240 256,240L16,240Q0,240 0,224L0,32Q0,16 16,16Z" />
+    <path
+        android:fillColor="@color/ui_board"
+        android:pathData="M16,0L256,0Q272,0 272,16L272,216Q272,232 256,232L16,232Q0,232 0,216L0,16Q0,0 16,0Z" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M8,21a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M46,21a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M84,21a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M122,21a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M160,21a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M198,21a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M236,21a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M8,59a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M46,59a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M84,59a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M122,59a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M160,59a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M198,59a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M236,59a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M8,97a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M46,97a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M84,97a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M122,97a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M160,97a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M198,97a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M236,97a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M8,135a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M46,135a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M84,135a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M122,135a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M160,135a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M198,135a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M236,135a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_red"
+        android:pathData="M8,173a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_red"
+        android:pathData="M46,173a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_red"
+        android:pathData="M84,173a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M122,173a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M160,173a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M198,173a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M236,173a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_yellow"
+        android:pathData="M8,211a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_yellow"
+        android:pathData="M46,211a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_yellow"
+        android:pathData="M84,211a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_yellow"
+        android:pathData="M122,211a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M160,211a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M198,211a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+    <path
+        android:fillColor="@color/ui_hole"
+        android:pathData="M236,211a14,14 0,1 0,28,0a14,14 0,1 0,-28,0" />
+</vector>

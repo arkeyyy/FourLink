@@ -1,6 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.FourLink" parent="android:Theme.Material.Light.NoActionBar" />
-
+    <style
+        name="Theme.FourLink"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/amaranthregular</item>
+        <item name="fontFamily">@font/amaranthregular</item>
+        <item name="android:windowBackground">@color/ui_canvas</item>
+        <item name="android:colorBackground">@color/ui_canvas</item>
+        <item name="colorSurface">@color/ui_surface</item>
+        <item name="colorOnSurface">@color/ui_ink</item>
+        <item name="colorPrimary">@color/ui_accent</item>
+        <item name="colorSecondary">@color/ui_accent</item>
+        <item name="android:statusBarColor">@color/ui_canvas</item>
+        <item name="android:navigationBarColor">@color/ui_canvas</item>
+        <item name="android:windowLightStatusBar">@bool/ui_light_system_bars</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    <style
+        name="Ui"
+        parent="" />
+    <style name="Ui.Body">
+        <item name="android:fontFamily">@font/amaranthregular</item>
+        <item name="fontFamily">@font/amaranthregular</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/ui_muted</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+    <style
+        name="Ui.Caption"
+        parent="Ui.Body">
+        <item name="android:textSize">13sp</item>
+    </style>
+    <style
+        name="Ui.Eyebrow"
+        parent="Ui.Caption">
+        <item name="android:fontFamily">@font/amaranthregular</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">@color/ui_accent</item>
+    </style>
+    <style
+        name="Ui.Heading"
+        parent="Ui.Body">
+        <item name="android:fontFamily">@font/amaranthregular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/ui_ink</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+    </style>
+    <style
+        name="Ui.Title"
+        parent="Ui.Heading">
+        <item name="android:textSize">36sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+    <style
+        name="Ui.Subheading"
+        parent="Ui.Heading">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="Ui.Panel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:background">@drawable/ui_panel</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+    <style
+        name="Ui.Button"
+        parent="Widget.MaterialComponents.Button">
+        <item name="fontFamily">@font/amaranthregular</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">@font/amaranthregular</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textColor">@color/ui_button_text</item>
+        <item name="backgroundTint">@color/ui_button_fill</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="iconTint">@color/ui_on_chip</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">10dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+    <style name="Ui.Button.Secondary">
+        <item name="backgroundTint">@color/ui_surface</item>
+        <item name="android:textColor">@color/ui_ink</item>
+        <item name="iconTint">@color/ui_accent</item>
+        <item name="strokeColor">@color/ui_outline</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    <style
+        name="Ui.Button.Quiet"
+        parent="Ui.Button.Secondary">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="android:textColor">@color/ui_muted</item>
+    </style>
+    <style
+        name="Ui.Player"
+        parent="Ui.Subheading">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/ui_on_chip</item>
+    </style>
+    <style
+        name="Ui.Button.Danger"
+        parent="Ui.Button">
+        <item name="backgroundTint">@color/ui_surrender_fill</item>
+        <item name="android:textColor">@color/ui_colored_button_text</item>
+        <item name="iconTint">@color/ui_colored_button_text</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="rippleColor">#33102B4B</item>
+    </style>
+    <style
+        name="Ui.Button.Shortcut"
+        parent="Ui.Button.Danger">
+        <item name="backgroundTint">@color/ui_shortcut_fill</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    <style
+        name="Ui.Button.DialogSecondary"
+        parent="Ui.Button.Secondary">
+        <item name="backgroundTint">@color/ui_dialog_secondary_fill</item>
+        <item name="strokeColor">@color/white</item>
+    </style>
+    <style
+        name="Ui.Card"
+        parent="Ui.Panel">
+        <item name="android:background">@drawable/ui_card</item>
+    </style>
 </resources>

@@ -1,165 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/light_blue">
-    <TextView
-        android:id="@+id/tv_developer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FourLink Developers"
-        android:textStyle="bold"
-        android:textSize="40sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/amaranthregular"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
-
-    <ImageView
-        android:id="@+id/developer1_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="30dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/dev1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/tv_developer1Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="John Michael R. Sayson"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/developer1_image"
-        app:layout_constraintLeft_toLeftOf="@id/developer1_image"
-        app:layout_constraintRight_toRightOf="@id/developer1_image"
-        />
-
-    <TextView
-        android:id="@+id/dev1_role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Product Visionary"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tv_developer1Name"
-        app:layout_constraintLeft_toLeftOf="@id/developer1_image"
-        app:layout_constraintRight_toRightOf="@+id/developer1_image"
-        />
-
-    <TextView
-        android:id="@+id/tv_developer1Bio"
+    android:orientation="vertical"
+    android:background="@color/ui_canvas">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/page_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Program: BSCS - 2\nHobbies: Gaming. reading novels and listening to music"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:justificationMode="inter_word"
-        app:layout_constraintTop_toBottomOf="@id/dev1_role"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        />
-
-    <ImageView
-        android:id="@+id/developer2_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/dev2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_developer1Bio"/>
-
-    <TextView
-        android:id="@+id/tv_developer2Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aldrin D. Suse"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="24sp"
-
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/developer2_image"
-        app:layout_constraintLeft_toLeftOf="@id/developer2_image"
-        app:layout_constraintRight_toRightOf="@+id/developer2_image"/>
-
-    <TextView
-        android:id="@+id/dev2_role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lead Developer"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tv_developer2Name"
-        app:layout_constraintLeft_toLeftOf="@id/developer2_image"
-        app:layout_constraintRight_toRightOf="@+id/developer2_image"
-        />
-
-
-
-    <TextView
-        android:id="@+id/tv_developer2Bio"
+        android:minHeight="56dp"
+        app:navigationIcon="@drawable/ui_back"
+        app:navigationContentDescription="@string/back"
+        app:contentInsetEnd="20dp">
+        <com.example.fourlink.HeadingTextView
+            style="@style/Ui.Subheading"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/developers" />
+    </com.google.android.material.appbar.MaterialToolbar>
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Program: BSCS - 2\nHobbies: Videogames and listening to music"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="20sp"
-        android:justificationMode="inter_word"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/dev2_role"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        />
-
-    <TextView
-        android:id="@+id/about_app"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:text="This application was developed as a project for our Platform-based Development (Mobile) course, demonstrating our skills in mobile gme development, game logic and user experience design."
-
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="18sp"
-        android:justificationMode="inter_word"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tv_developer2Bio"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@id/tv_developer2Bio"
-        app:layout_constraintEnd_toEndOf="@id/tv_developer2Bio"
-        />
-
-
-    <ImageView
-        android:id="@+id/back_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text=""
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/game_back_button"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="10dp"
-        />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.example.fourlink.ContentColumn
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/page_gutter"
+                android:layout_gravity="top|center_horizontal">
+                <TextView
+                    style="@style/Ui.Body"
+                    android:text="@string/developer_intro"
+                    android:layout_marginBottom="20dp" />
+                <LinearLayout style="@style/Ui.Panel">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/dev1"
+                        android:importantForAccessibility="no"
+                        android:scaleType="fitCenter"
+                        android:id="@+id/developer1_image"
+                        android:layout_marginBottom="16dp" />
+                    <com.example.fourlink.HeadingTextView
+                        style="@style/Ui.Heading"
+                        android:text="@string/dev1_name" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/dev1_role"
+                        android:textColor="@color/ui_accent"
+                        android:layout_marginTop="4dp" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/dev1_bio"
+                        android:layout_marginTop="16dp" />
+                </LinearLayout>
+                <LinearLayout style="@style/Ui.Panel">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/dev2"
+                        android:importantForAccessibility="no"
+                        android:scaleType="fitCenter"
+                        android:id="@+id/developer2_image"
+                        android:layout_marginBottom="16dp" />
+                    <com.example.fourlink.HeadingTextView
+                        style="@style/Ui.Heading"
+                        android:text="@string/dev2_name" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/dev2_role"
+                        android:textColor="@color/ui_accent"
+                        android:layout_marginTop="4dp" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/dev2_bio"
+                        android:layout_marginTop="16dp" />
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/Ui.Panel"
+                    android:background="@drawable/ui_hero">
+                    <TextView
+                        style="@style/Ui.Eyebrow"
+                        android:text="@string/project_label"
+                        android:textColor="@color/ui_yellow" />
+                    <com.example.fourlink.HeadingTextView
+                        style="@style/Ui.Heading"
+                        android:text="@string/project_title"
+                        android:textColor="@color/ui_on_hero"
+                        android:layout_marginTop="12dp" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/project_body"
+                        android:textColor="@color/ui_hero_muted"
+                        android:layout_marginTop="12dp" />
+                </LinearLayout>
+            </com.example.fourlink.ContentColumn>
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,221 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/light_blue">
-
-    <TextView
-        android:id="@+id/bg_settings"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="120dp"
-        android:background="@drawable/rectangle_bg"
-        android:backgroundTint="@color/dark_blue"
-        />
-
-    <ImageView
-        android:id="@+id/back_button"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/game_back_button"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        />
-
-    <TextView
-        android:id="@+id/settings_text"
-        android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/ui_canvas">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/page_toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="48dp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="@id/bg_settings"
-        app:layout_constraintLeft_toLeftOf="@id/bg_settings"
-        app:layout_constraintRight_toRightOf="@id/bg_settings"
-        android:layout_marginTop="10dp"
-        />
-
-    <TextView
-        android:id="@+id/music_bar"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="MUSIC"
-        android:fontFamily="@font/amaranthregular"
-        android:textColor="@color/white"
-        android:textSize="32dp"
-        android:background="@drawable/rectangle_bg"
-        android:backgroundTint="@color/blue"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/settings_text"
-        app:layout_constraintLeft_toLeftOf="@id/bg_settings"
-        app:layout_constraintRight_toRightOf="@id/bg_settings"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="25dp"
-        />
-
-    <ImageView
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/switch_img"
-        app:layout_constraintTop_toTopOf="@+id/music_bar"
-        app:layout_constraintBottom_toBottomOf="@id/music_bar"
-        app:layout_constraintRight_toRightOf="@id/music_bar"
-        android:layout_marginEnd="10dp"
-        />
-
-    <TextView
-        android:id="@+id/sfx_bar"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="SFX"
-        android:fontFamily="@font/amaranthregular"
-        android:textColor="@color/white"
-        android:textSize="32dp"
-        android:background="@drawable/rectangle_bg"
-        android:backgroundTint="@color/blue"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        app:layout_constraintTop_toBottomOf="@id/music_bar"
-        app:layout_constraintLeft_toLeftOf="@id/bg_settings"
-        app:layout_constraintRight_toRightOf="@id/bg_settings"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp"
-        />
-
-    <ImageView
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/switch_img"
-        app:layout_constraintTop_toTopOf="@+id/sfx_bar"
-        app:layout_constraintBottom_toBottomOf="@id/sfx_bar"
-        app:layout_constraintRight_toRightOf="@id/sfx_bar"
-        android:layout_marginEnd="10dp"
-        />
-    
-    <TextView
-        android:id="@+id/settings_bg_bottom"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:background="@drawable/rectangle_bg"
-        android:backgroundTint="@color/light_blue"
-        app:layout_constraintBottom_toBottomOf="@id/bg_settings"
-        app:layout_constraintRight_toRightOf="@id/bg_settings"
-        app:layout_constraintLeft_toLeftOf="@id/bg_settings"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        />
-
-    <TextView
-        android:id="@+id/privacy_policy_bar"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="Privacy Policy"
-        android:fontFamily="@font/amaranthregular"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        android:background="@drawable/rectangle_bg"
-        android:backgroundTint="@color/blue"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        app:layout_constraintLeft_toLeftOf="@+id/settings_bg_bottom"
-        app:layout_constraintRight_toRightOf="@id/settings_bg_bottom"
-        app:layout_constraintBottom_toBottomOf="@+id/settings_bg_bottom"
-        app:layout_constraintTop_toTopOf="@id/settings_bg_bottom"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        />
-
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/privacy_policy_img"
-        app:layout_constraintBottom_toBottomOf="@id/privacy_policy_bar"
-        app:layout_constraintTop_toTopOf="@id/privacy_policy_bar"
-        app:layout_constraintRight_toRightOf="@id/privacy_policy_bar"
-        android:layout_marginEnd="15dp"
-        />
-
-    <TextView
-        android:id="@+id/share_bar"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="Share"
-        android:fontFamily="@font/amaranthregular"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        android:background="@drawable/rectangle_bg"
-        android:backgroundTint="@color/blue"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        app:layout_constraintLeft_toLeftOf="@+id/settings_bg_bottom"
-        app:layout_constraintRight_toRightOf="@id/settings_bg_bottom"
-        app:layout_constraintBottom_toTopOf="@id/privacy_policy_bar"
-        app:layout_constraintTop_toTopOf="@id/settings_bg_bottom"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        />
-
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/share_img"
-        app:layout_constraintBottom_toBottomOf="@id/share_bar"
-        app:layout_constraintTop_toTopOf="@id/share_bar"
-        app:layout_constraintRight_toRightOf="@id/share_bar"
-        android:layout_marginEnd="15dp"
-        />
-
-    <TextView
-        android:id="@+id/dev_bar"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:text="About the developers"
-        android:fontFamily="@font/amaranthregular"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        android:background="@drawable/rectangle_bg"
-        android:backgroundTint="@color/blue"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        app:layout_constraintLeft_toLeftOf="@+id/settings_bg_bottom"
-        app:layout_constraintRight_toRightOf="@id/settings_bg_bottom"
-        app:layout_constraintTop_toBottomOf="@id/privacy_policy_bar"
-        app:layout_constraintBottom_toBottomOf="@id/settings_bg_bottom"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        />
-
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/dev_img"
-        app:layout_constraintBottom_toBottomOf="@id/dev_bar"
-        app:layout_constraintTop_toTopOf="@id/dev_bar"
-        app:layout_constraintRight_toRightOf="@id/dev_bar"
-        android:layout_marginEnd="15dp"
-        />
-
-
-
-
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:minHeight="56dp"
+        app:navigationIcon="@drawable/ui_back"
+        app:navigationContentDescription="@string/back"
+        app:contentInsetEnd="20dp">
+        <com.example.fourlink.HeadingTextView
+            style="@style/Ui.Subheading"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/settings" />
+    </com.google.android.material.appbar.MaterialToolbar>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.example.fourlink.ContentColumn
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/page_gutter"
+                android:layout_gravity="top|center_horizontal">
+                <LinearLayout
+                    style="@style/Ui.Card"
+                    android:background="@drawable/ui_settings_panel">
+                    <com.example.fourlink.HeadingTextView
+                        style="@style/Ui.Subheading"
+                        android:text="@string/appearance"
+                        android:textColor="@color/ui_on_settings" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/appearance_body"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/ui_on_settings" />
+                    <RadioGroup
+                        android:id="@+id/theme_options"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="12dp">
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:fontFamily="@font/amaranthregular"
+                            android:id="@+id/theme_system"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:padding="12dp"
+                            android:text="@string/theme_system"
+                            android:textSize="16sp"
+                            android:textColor="@color/ui_option_text"
+                            android:buttonTint="@color/ui_option_text"
+                            android:background="@drawable/ui_option_background"
+                            android:layout_marginBottom="8dp"
+                            android:foreground="?attr/selectableItemBackground" />
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:fontFamily="@font/amaranthregular"
+                            android:id="@+id/theme_light"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:padding="12dp"
+                            android:text="@string/theme_light"
+                            android:textSize="16sp"
+                            android:textColor="@color/ui_option_text"
+                            android:buttonTint="@color/ui_option_text"
+                            android:background="@drawable/ui_option_background"
+                            android:layout_marginBottom="8dp"
+                            android:foreground="?attr/selectableItemBackground" />
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:fontFamily="@font/amaranthregular"
+                            android:id="@+id/theme_dark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:padding="12dp"
+                            android:text="@string/theme_dark"
+                            android:textSize="16sp"
+                            android:textColor="@color/ui_option_text"
+                            android:buttonTint="@color/ui_option_text"
+                            android:background="@drawable/ui_option_background"
+                            android:layout_marginBottom="8dp"
+                            android:foreground="?attr/selectableItemBackground" />
+                    </RadioGroup>
+                </LinearLayout>
+                <TextView
+                    style="@style/Ui.Caption"
+                    android:text="@string/theme_hint"
+                    android:layout_marginBottom="28dp" />
+                <LinearLayout
+                    style="@style/Ui.Card"
+                    android:background="@drawable/ui_settings_panel">
+                    <TextView
+                        style="@style/Ui.Eyebrow"
+                        android:text="@string/about"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/ui_on_settings" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/dev_bar"
+                        style="@style/Ui.Button.DialogSecondary"
+                        android:text="@string/developers"
+                        app:icon="@drawable/ui_arrow"
+                        app:iconGravity="end"
+                        app:backgroundTint="@color/ui_settings_row"
+                        android:textColor="@color/ui_on_settings_row"
+                        app:iconTint="@color/ui_on_settings_row" />
+                    <TextView
+                        android:id="@+id/app_version"
+                        style="@style/Ui.Caption"
+                        android:layout_marginTop="24dp"
+                        android:textColor="@color/ui_on_settings" />
+                </LinearLayout>
+            </com.example.fourlink.ContentColumn>
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

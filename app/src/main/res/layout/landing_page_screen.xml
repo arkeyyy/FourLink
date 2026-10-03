@@ -1,61 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/landing_page_bg"
-    tools:context=".LandingPageActivity">
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FourLink"
-        android:textSize="80dp"
-        android:fontFamily="@font/amaranthregular"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="45dp"
-        />
-
-    <ImageView
-        android:id="@+id/landing_page_img"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:src="@drawable/board_img_loading_screen"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Drop your pieces, connect four"
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="26dp"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/landing_page_img"
-        android:layout_marginTop="15dp"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="and dominate the board."
-        android:fontFamily="@font/amaranthregular"
-        android:textSize="26dp"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text1"
-        />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:background="@color/ui_art_background">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.example.fourlink.ContentColumn
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="32dp">
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/fourlink_logo"
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitCenter"
+                    android:layout_marginBottom="24dp" />
+                <com.example.fourlink.HeadingTextView
+                    style="@style/Ui.Title"
+                    android:text="@string/app_name"
+                    android:textColor="@color/ui_on_art"
+                    android:gravity="center"
+                    android:textSize="48sp" />
+                <TextView
+                    style="@style/Ui.Body"
+                    android:text="@string/landing_tagline"
+                    android:textColor="@color/ui_on_art"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/ui_board_art"
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitCenter"
+                    android:padding="12dp"
+                    android:layout_marginTop="32dp"
+                    android:rotation="-6"
+                    android:layerType="software" />
+                <TextView
+                    style="@style/Ui.Eyebrow"
+                    android:text="@string/menu_footer"
+                    android:textColor="@color/ui_on_art"
+                    android:gravity="center"
+                    android:layout_marginTop="32dp" />
+            </com.example.fourlink.ContentColumn>
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

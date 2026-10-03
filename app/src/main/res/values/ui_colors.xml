@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ui_canvas">@color/light_blue</color>
+    <color name="ui_tutorial_canvas">#80BFFF</color>
+    <color name="ui_surface">@color/blue</color>
+    <color name="ui_surface_alt">@color/light_blue</color>
+    <color name="ui_ink">@color/black</color>
+    <color name="ui_muted">#102B4B</color>
+    <color name="ui_outline">@color/white</color>
+    <color name="ui_accent">#003366</color>
+    <color name="ui_hero">@color/dark_blue</color>
+    <color name="ui_hero_edge">@color/white</color>
+    <color name="ui_on_hero">@color/white</color>
+    <color name="ui_hero_muted">@color/white</color>
+    <color name="ui_yellow">@color/yellow</color>
+    <color name="ui_red">@color/red</color>
+    <color name="ui_on_chip">@color/black</color>
+    <color name="ui_board">@color/dark_blue</color>
+    <color name="ui_board_edge">#0052A3</color>
+    <color name="ui_hole">@color/light_blue</color>
+    <color name="ui_danger">#680011</color>
+    <color name="ui_winner">@color/white</color>
+    <color name="ui_card">#B8DDFF</color>
+    <color name="ui_menu_shortcut">@color/light_yellow</color>
+    <color name="ui_surrender">@color/light_red</color>
+    <color name="ui_on_colored_button">#102B4B</color>
+    <color name="ui_dialog_secondary">#4DA6FF</color>
+    <color name="ui_selected_row">@color/light_yellow</color>
+    <color name="ui_on_selected_row">#102B4B</color>
+    <color name="ui_option_outline">@color/white</color>
+    <color name="ui_art_background">@color/light_blue</color>
+    <color name="ui_on_art">#102B4B</color>
+    <color name="ui_settings_surface">@color/dark_blue</color>
+    <color name="ui_on_settings">@color/white</color>
+    <color name="ui_settings_row">@color/blue</color>
+    <color name="ui_on_settings_row">#102B4B</color>
+</resources>

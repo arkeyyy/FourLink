@@ -1,99 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue">
-
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/game_back_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp" />
-
-    <TextView
-        android:id="@+id/tutorial_title"
-        android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/ui_tutorial_canvas">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/page_toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="How to Play"
-        android:textSize="32dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:fontFamily="@font/amaranthregular"
-        app:layout_constraintStart_toEndOf="@+id/back_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="25dp"
-        />
-
-
-
-
-    <ScrollView
-        android:id="@+id/tutorial_scroll"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="24dp"
-        app:layout_constraintTop_toBottomOf="@id/back_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
+        android:minHeight="56dp"
+        app:navigationIcon="@drawable/ui_back"
+        app:navigationContentDescription="@string/back"
+        app:contentInsetEnd="20dp">
+        <com.example.fourlink.HeadingTextView
+            style="@style/Ui.Subheading"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/tutorial" />
+    </com.google.android.material.appbar.MaterialToolbar>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/objective"
+            android:layout_height="wrap_content">
+            <com.example.fourlink.ContentColumn
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button"
-                android:backgroundTint="@color/dark_blue"
-                android:padding="8dp"
-                android:textSize="18sp"
-                android:lineSpacingExtra="8dp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/amaranthregular"
-                android:text="🎯 Objective\n- Connect 4 discs in a row before your opponent!"
-                android:layout_marginBottom="30dp"
-                />
-
-            <TextView
-                android:id="@+id/mechanics"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button"
-                android:backgroundTint="@color/dark_blue"
-                android:padding="8dp"
-                android:textSize="18sp"
-                android:lineSpacingExtra="8dp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/amaranthregular"
-                android:text="🧩 Mechanics\n- Two players: 🟡 Yellow and 🔴 Red\n- Take turns dropping discs into 7 columns\n- Discs fall to the lowest available slot in the column\n- You can’t drop in a full column"
-                android:layout_marginBottom="30dp"
-                />
-
-            <TextView
-                android:id="@+id/how_to_win"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/button"
-                android:backgroundTint="@color/dark_blue"
-                android:fontFamily="@font/amaranthregular"
-                android:lineSpacingExtra="8dp"
-                android:padding="8dp"
-                android:text="🏆 How to Win\nFirst to connect 4 discs:\n- Horizontally → 🟡🟡🟡🟡\n\n- Vertically ↓ 🔴\n                      🔴\n                      🔴\n                      🔴\n\n- Diagonally ↙ or ↘ 🟡🔴\n                              🟡        🔴\n                          🟡                🔴\n                      🟡                       🔴\n\nIf the board is full and no one connects 4, the game is a draw ❌"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-
-        </LinearLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/page_gutter"
+                android:layout_gravity="top|center_horizontal">
+                <TextView
+                    style="@style/Ui.Eyebrow"
+                    android:text="@string/tutorial_tag" />
+                <com.example.fourlink.HeadingTextView
+                    style="@style/Ui.Title"
+                    android:text="@string/tutorial_heading"
+                    android:layout_marginTop="12dp" />
+                <TextView
+                    style="@style/Ui.Body"
+                    android:text="@string/tutorial_intro"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="24dp" />
+                <LinearLayout style="@style/Ui.Card">
+                    <com.example.fourlink.HeadingTextView
+                        style="@style/Ui.Subheading"
+                        android:text="@string/step_one" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/step_one_body"
+                        android:layout_marginTop="8dp" />
+                    <com.example.fourlink.HeadingTextView
+                        style="@style/Ui.Subheading"
+                        android:text="@string/step_two"
+                        android:layout_marginTop="20dp" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/step_two_body"
+                        android:layout_marginTop="8dp" />
+                    <com.example.fourlink.HeadingTextView
+                        style="@style/Ui.Subheading"
+                        android:text="@string/step_three"
+                        android:layout_marginTop="20dp" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/step_three_body"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+                <com.example.fourlink.HeadingTextView
+                    style="@style/Ui.Heading"
+                    android:text="@string/winning_patterns"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp" />
+                <com.example.fourlink.PatternRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        style="@style/Ui.Card"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="16dp">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="156dp"
+                            android:src="@drawable/ui_win_horizontal"
+                            android:contentDescription="@string/example_horizontal"
+                            android:scaleType="fitCenter"
+                            android:layerType="software" />
+                        <TextView
+                            style="@style/Ui.Subheading"
+                            android:text="@string/horizontal"
+                            android:gravity="center"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/Ui.Card"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="16dp">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="156dp"
+                            android:src="@drawable/ui_win_vertical"
+                            android:contentDescription="@string/example_vertical"
+                            android:scaleType="fitCenter"
+                            android:layerType="software" />
+                        <TextView
+                            style="@style/Ui.Subheading"
+                            android:text="@string/vertical"
+                            android:gravity="center"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                </com.example.fourlink.PatternRow>
+                <com.example.fourlink.PatternRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        style="@style/Ui.Card"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="16dp">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="156dp"
+                            android:src="@drawable/ui_win_diagonal_up"
+                            android:contentDescription="@string/example_diagonal_up"
+                            android:scaleType="fitCenter"
+                            android:layerType="software" />
+                        <TextView
+                            style="@style/Ui.Subheading"
+                            android:text="@string/diagonal_up"
+                            android:gravity="center"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/Ui.Card"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="16dp">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="156dp"
+                            android:src="@drawable/ui_win_diagonal_down"
+                            android:contentDescription="@string/example_diagonal_down"
+                            android:scaleType="fitCenter"
+                            android:layerType="software" />
+                        <TextView
+                            style="@style/Ui.Subheading"
+                            android:text="@string/diagonal_down"
+                            android:gravity="center"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                </com.example.fourlink.PatternRow>
+                <LinearLayout
+                    style="@style/Ui.Panel"
+                    android:background="@drawable/ui_badge">
+                    <com.example.fourlink.HeadingTextView
+                        style="@style/Ui.Subheading"
+                        android:text="@string/draw_rule" />
+                    <TextView
+                        style="@style/Ui.Body"
+                        android:text="@string/draw_rule_body"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </com.example.fourlink.ContentColumn>
+        </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,51 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:layout_width="wrap_content"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/game_end_bg">
-
-    <TextView
-        android:id="@+id/tvSurrenderMessage"
-        android:text="SURRENDER?"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:fontFamily="@font/amaranthregular"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+    android:background="@drawable/ui_card"
+    android:fillViewport="false">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:weightSum="2"
-        android:layout_marginTop="10dp">
-
-        <Button
-            android:id="@+id/btnYes"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Yes"
-            android:textSize="18dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/amaranthregular"
-            android:background="@drawable/button_main_menu" />
-
-        <Button
+        android:orientation="vertical"
+        android:padding="24dp">
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/ui_flag"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/ui_badge"
+            android:padding="8dp" />
+        <com.example.fourlink.HeadingTextView
+            android:id="@+id/tvSurrenderMessage"
+            style="@style/Ui.Heading"
+            android:text="@string/surrender_title" />
+        <TextView
+            android:id="@+id/surrender_consequence"
+            style="@style/Ui.Body"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp" />
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="No"
-            android:textSize="18dp"
-            android:fontFamily="@font/amaranthregular"
-            android:background="@drawable/button_play_again"
-            android:layout_marginStart="12dp" />
+            style="@style/Ui.Button"
+            android:text="@string/keep_playing" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnYes"
+            style="@style/Ui.Button.Danger"
+            android:text="@string/surrender"
+            android:layout_marginTop="8dp" />
     </LinearLayout>
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
